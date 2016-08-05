@@ -1,6 +1,6 @@
 local E, L, V, P, G = unpack(ElvUI)
 
-
+--Is everything ok from here down
 local _G = _G
 local pairs, tinsert, tremove, unpack = pairs, tinsert, tremove, unpack
 
@@ -12,8 +12,8 @@ local UIFrameFadeOut = UIFrameFadeOut
 local CreateAnimationGroup = CreateAnimationGroup
 local CONTINUE, PREVIOUS, UNKNOWN = CONTINUE, PREVIOUS, UNKNOWN
 local DPS, TANK, HEALER = DPS, TANK, HEALER
-
-
+--to Here?
+--And do I need this frame below?
 local function SetMoverPosition(mover, point, anchor, secondaryPoint, x, y)
 	if not _G[mover] then return end
 	local frame = _G[mover]
