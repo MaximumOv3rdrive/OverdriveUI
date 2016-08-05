@@ -732,7 +732,9 @@ local function SetupUnitFrames(layout)
 	E:UpdateAll(true)
 end
 
-
+local OverdriveUIInstallTable = {
+...
+}
 --This is where I am trying to firgure out how to get my addon profiles added as well as how to create buttons in the installer 
 --for each spec (heals, dps, tank)
 
