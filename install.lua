@@ -12,19 +12,10 @@ local UIFrameFadeOut = UIFrameFadeOut
 local CreateAnimationGroup = CreateAnimationGroup
 local CONTINUE, PREVIOUS, UNKNOWN = CONTINUE, PREVIOUS, UNKNOWN
 local DPS, TANK, HEALER = DPS, TANK, HEALER
---to Here?
---And do I need this frame below?
-local function SetMoverPosition(mover, point, anchor, secondaryPoint, x, y)
-	if not _G[mover] then return end
-	local frame = _G[mover]
 
-	frame:ClearAllPoints()
-	frame:SetPoint(point, anchor, secondaryPoint, x, y)
-	E:SaveMoverPosition(mover)
-end
 
 local CURRENT_PAGE = 0
-local MAX_PAGE = 9
+local MAX_PAGE = 8
 
 local function SetupOUILayout () 
 	--General
@@ -282,8 +273,7 @@ local function SetupActionbars(layout)
 		E.db["movers"]["ShiftAB"] = "TOPLEFT,ElvUIParent,BOTTOMLEFT,507,58"
 		E.db["movers"]["BossHeaderMover"] = "TOPLEFT,ElvUIParent,TOPLEFT,4,-243"
 		E.db["movers"]["ArenaHeaderMover"] = "TOPRIGHT,ElvUIParent,TOPRIGHT,-238,-355"	
-	end,	
-end
+	end
 	
 local function SetupUnitFrames(layout)	
 	if layout == 'tank' then
@@ -699,8 +689,7 @@ local function SetupUnitFrames(layout)
 		E.db["movers"]["ElvUF_TargetTargetMover"] = "BOTTOMRIGHT,ElvUIParent,BOTTOMRIGHT,-153,330"
 		E.db["movers"]["ElvUF_PartyMover"] = "BOTTOMLEFT,ElvUIParent,BOTTOMLEFT,785,90"
 		E.db["movers"]["ElvUF_AssistMover"] = "TOPLEFT,ElvUIParent,BOTTOMLEFT,363,311"
-	end,
-end
+	end
 
 local function SetupAddOnSkins()
 	if IsAddOnLoaded('AddOnSkins') then
@@ -731,7 +720,7 @@ local xctName = GetAddOnMetadata('xCT', 'Title')
 
 local function SetupOuiAddons()
 	--Skada Profile
-	if SkadaDB and IsAddonLoaded("Skada") then
+	if SkadaDB and IsAddonLoaded('Skada') then
 		SkadaDB['profiles']['MaximumOverdrive'] = {
 			["windows"] = {
 				{
@@ -806,8 +795,9 @@ local function SetupOuiAddons()
 			["tooltippos"] = "topleft",
 			["reset"] = {
 				["join"] = 1,
-			},
-		elseif SkadaDB and IsAddonLoaded("Skada") then
+		}
+	}		
+		elseif SkadaDB and IsAddonLoaded('Skada') then
 		SkadaDB['profiles']['MaximumOverheals'] = {
 			["windows"] = {
 				{
@@ -4433,10 +4423,11 @@ local function SetupOuiAddons()
 					["X"] = -279,
 				},
 			}
-			end
+		}
+	end
 			
 			--Raven Profiles
-			if RavenDB and IsAddonLoaded("Raven") then
+			if RavenDB and IsAddonLoaded('Raven') then
 			RavenDB["profiles"]["MaximumOverdrive"] = {
 					["BarGroups"] = {
 					["PlayerDebuffs"] = {
@@ -5116,7 +5107,7 @@ local function SetupOuiAddons()
 					},
 				},
 			}
-			elseif RavenDB and IsAddonLoaded("Raven") then
+			elseif RavenDB and IsAddonLoaded('Raven') then
 			RavenDB["profiles"]["MaximumOverdrive-Bars"] = { 
 				["BarGroups"] = {
 				["PlayerDebuffs"] = {
@@ -7081,10 +7072,11 @@ local function SetupOuiAddons()
 			[113942] = 90,
 			[185855] = 12,
 			[23958] = 10,
-		},
+			},
 			["muteSFX"] = true,
-		},
-		elseif RavenDB and IsAddonLoaded("Raven") then
+		}
+		
+		elseif RavenDB and IsAddonLoaded('Raven') then
 		RavenDB["profiles"]["MaximumOverdrive - Bars"] = {
 			["Durations"] = {
 			["Evasion"] = 15,
@@ -7678,11 +7670,12 @@ local function SetupOuiAddons()
 				},
 				["wrapDirection"] = true,
 				["timeOffset"] = 14,
+				},
 			},
-		},
-		["muteSFX"] = true,
-		},
-		elseif RavenDB and IsAddonLoaded("Raven") then
+			["muteSFX"] = true,
+		}
+		
+		elseif RavenDB and IsAddonLoaded('Raven') then
 		RavenDB["profiles"]["MaximumOverheals-Bars"] = { 
 				["BarGroups"] = {
 				["PlayerDebuffs"] = {
@@ -8317,9 +8310,10 @@ local function SetupOuiAddons()
 						["testResult"] = false,
 					},
 				},
-			},
-		end
-		if DBM_AllSavedOptions and IsAddonLoaded("DBM-Core") then
+			}
+		}
+		
+		if DBM_AllSavedOptions and IsAddonLoaded('DBM-Core') then
 				DBM_AllSavedOptions["profiles"]["MaximumOverdrive"] = {
 					["SpecialWarningFontSize"] = 50,
 					["HUDTextureOverride"] = false,
@@ -8591,8 +8585,9 @@ local function SetupOuiAddons()
 					["InfoFrameLocked"] = true,
 					["CATATWMessageShown"] = false,
 					["ShowFlashFrame"] = true,
-				},
-			elseif DBM_AllSavedOptions and IsAddonLoaded("DBM-Core") then
+				}
+				
+				elseif DBM_AllSavedOptions and IsAddonLoaded('DBM-Core') then
 				DBM_AllSavedOptions["profiles"]["MaximumOverheals"] = {
 					["SpecialWarningFontSize"] = 50,
 					["HUDTextureOverride"] = false,
@@ -8864,10 +8859,10 @@ local function SetupOuiAddons()
 					["AFKHealthWarning"] = false,
 					["CATATWMessageShown"] = false,
 					["HelpMessageVersion"] = 2,
-				},
-			},
-		}	
-		if layout == "dps" then DBM-Core.DBM_AllSavedOptions:SetProfile("MaximumOverdrive"), elseif layout == "tank" then DBM-Core.DBM_AllSavedOptions:SetProfile("MaximumOverdrive"), elseif layout == "healer" then DBM-Core.DBM_AllSavedOptions:SetProfile("MaximumOverheals")
+				}
+				Eb.DBM_AllSavedOptions:SetProfile("MaximumOverdrive")
+			end
+		end
 	end
 end
 
@@ -8896,8 +8891,8 @@ local OverdriveUIInstallTable = {
 				_G["PluginInstallFrame"].Desc3:SetText(L["Importance: |cffFF0000Low|r"])
 
 				_G["PluginInstallFrame"].Option1:Show()
-				_G["PluginInstallFrame"].Option1:SetScript('OnClick', function SetupOUILayout (true) ;end) 
-				_G["PluginInstallFrame"].Option1:SetText(Set Layout)
+				_G["PluginInstallFrame"].Option1:SetScript('OnClick', function() SetupOUILayout(true); end) 
+				_G["PluginInstallFrame"].Option1:SetText("Set Layout")
 			end,
 			[3] = function()
 				_G["PluginInstallFrame"].SubTitle:SetText(L["Overdrive UI Action Bars"])
@@ -8906,16 +8901,16 @@ local OverdriveUIInstallTable = {
 				_G["PluginInstallFrame"].Desc3:SetText(L["Importance: |cffFF0000High|r"])
 
 				_G["PluginInstallFrame"].Option1:Show()
-				_G["PluginInstallFrame"].Option1:SetScript('OnClick', function SetupActionbars(DPS); end)
-				_G["PluginInstallFrame"].Option1:SetText(DPS)
+				_G["PluginInstallFrame"].Option1:SetScript('OnClick', function() SetupActionbars(DPS); end)
+				_G["PluginInstallFrame"].Option1:SetText("DPS")
 
 				_G["PluginInstallFrame"].Option2:Show()
 				_G["PluginInstallFrame"].Option2:SetScript('OnClick', function() SetupActionbars(TANK); end)
-				_G["PluginInstallFrame"].Option2:SetText(TANK)
+				_G["PluginInstallFrame"].Option2:SetText("TANK")
 				
 				_G["PluginInstallFrame"].Option3:Show()
 				_G["PluginInstallFrame"].Option3:SetScript('OnClick', function() SetupActionbars(HEALER); end)
-				_G["PluginInstallFrame"].Option3:SetText(HEALER)
+				_G["PluginInstallFrame"].Option3:SetText("HEALER")
 			end,
 			[4] = function()
 				_G["PluginInstallFrame"].SubTitle:SetText(L["Setup Addon Profiles - DBM"])
@@ -8924,13 +8919,13 @@ local OverdriveUIInstallTable = {
 				_G["PluginInstallFrame"].Desc3:SetText(L["Importance: |cffD3CF00High|r"])
 
 				_G["PluginInstallFrame"].Option1:Show()
-				_G["PluginInstallFrame"].Option1:SetScript('OnClick', function()if layout == "dps" then DBM-Core.DBM_AllSavedOptions:SetProfile("MaximumOverdrive"), elseif layout == "tank" then DBM-Core.DBM_AllSavedOptions:SetProfile("MaximumOverdrive"); end)
+				_G["PluginInstallFrame"].Option1:SetScript('OnClick', function() Eb.DBM_AllSavedOptions:SetProfile("MaximumOverdrive"); end)
 					
-				_G["PluginInstallFrame"].Option1:SetText(DPS/TANK)
+				_G["PluginInstallFrame"].Option1:SetText("DPS/TANK")
 
 				_G["PluginInstallFrame"].Option2:Show()
-				_G["PluginInstallFrame"].Option2:SetScript('OnClick', function()if layout == "healer" then DBM-Core.DBM_AllSavedOptions:SetProfile("MaximumOverheals"); end)
-				_G["PluginInstallFrame"].Option2:SetText(HEALER)
+				_G["PluginInstallFrame"].Option2:SetScript('OnClick', function() Eb.DBM_AllSavedOptions:SetProfile("MaximumOverheals"); end)
+				_G["PluginInstallFrame"].Option2:SetText("HEALER")
 			end,
 			[5] = function()
 				_G["PluginInstallFrame"].SubTitle:SetText(L["Setup Addon Profiles - Raven"])
@@ -8939,20 +8934,20 @@ local OverdriveUIInstallTable = {
 				_G["PluginInstallFrame"].Desc3:SetText(L["Importance: |cffD3CF00High|r"])
 
 				_G["PluginInstallFrame"].Option1:Show()
-				_G["PluginInstallFrame"].Option1:SetScript('OnClick', function()if RavenDB and IsAddonLoaded("Raven") then RavenDB["profiles"]["MaximumOverdrive"]; end)	
-				_G["PluginInstallFrame"].Option1:SetText(DPS/TANK)
+				_G["PluginInstallFrame"].Option1:SetScript('OnClick', function() Eb.Raven.db:SetProfile("MaximumOverdrive"); end)	
+				_G["PluginInstallFrame"].Option1:SetText("DPS/TANK")
 
 				_G["PluginInstallFrame"].Option2:Show()
-				_G["PluginInstallFrame"].Option2:SetScript('OnClick', function()if RavenDB and IsAddonLoaded("Raven") then RavenDB["profiles"]["MaximumOverdrive-Bars"]; end)
-				_G["PluginInstallFrame"].Option2:SetText(DPS/TANK-with Bars)
+				_G["PluginInstallFrame"].Option2:SetScript('OnClick', function() Eb.Raven.db:SetProfile("MaximumOverdrive-Bars"); end)
+				_G["PluginInstallFrame"].Option2:SetText("DPS/TANK-with Bars")
 				
 				_G["PluginInstallFrame"].Option1:Show()
-				_G["PluginInstallFrame"].Option1:SetScript('OnClick', function()if RavenDB and IsAddonLoaded("Raven") then RavenDB["profiles"]["MaximumOverheals"]; end)	
+				_G["PluginInstallFrame"].Option1:SetScript('OnClick', function() Eb.Raven.db:SetProfile("MaximumOverheals"); end)
 				_G["PluginInstallFrame"].Option1:SetText(HEALER)
 
 				_G["PluginInstallFrame"].Option2:Show()
-				_G["PluginInstallFrame"].Option2:SetScript('OnClick', function()if RavenDB and IsAddonLoaded("Raven") then RavenDB["profiles"]["MaximumOverheals-Bars"]; end)
-				_G["PluginInstallFrame"].Option2:SetText(HEALER-with Bars)	
+				_G["PluginInstallFrame"].Option2:SetScript('OnClick', function() Eb.Raven.db:SetProfile("MaximumOverheals-Bars"); end)
+				_G["PluginInstallFrame"].Option2:SetText("HEALER-with Bars")	
 			end,
 			[6] = function()
 				_G["PluginInstallFrame"].SubTitle:SetText(L["Setup Addon Profiles - xCT+"])
@@ -8961,9 +8956,9 @@ local OverdriveUIInstallTable = {
 				_G["PluginInstallFrame"].Desc3:SetText(L["Importance: |cffD3CF00Medium|r"])
 
 				_G["PluginInstallFrame"].Option1:Show()
-				_G["PluginInstallFrame"].Option1:SetScript('OnClick', function(); end)
+				_G["PluginInstallFrame"].Option1:SetScript('OnClick', function() Eb.xCT_Plus.db:SetProfile("MaximumOverdrive"); end)
 					
-				_G["PluginInstallFrame"].Option1:SetText(SET COMBAT TEXTS)
+				_G["PluginInstallFrame"].Option1:SetText("SET COMBAT TEXTS")
 			end,
 			[7] = function()
 				_G["PluginInstallFrame"].SubTitle:SetText(L["Setup Addon Profiles - Skada"])
@@ -8972,13 +8967,13 @@ local OverdriveUIInstallTable = {
 				_G["PluginInstallFrame"].Desc3:SetText(L["Importance: |cffD3CF00Low|r"])
 
 				_G["PluginInstallFrame"].Option1:Show()
-				_G["PluginInstallFrame"].Option1:SetScript('OnClick', function()if SkadaDB and IsAddonLoaded("Skada") then SkadaDB['profiles']['MaximumOverdrive']); end)
+				_G["PluginInstallFrame"].Option1:SetScript('OnClick', function() Eb.Skada.db:SetProfile("MaximumOverdrive"); end)
 					
-				_G["PluginInstallFrame"].Option1:SetText(DPS/TANK)
+				_G["PluginInstallFrame"].Option1:SetText("DPS/TANK")
 
 				_G["PluginInstallFrame"].Option2:Show()
-				_G["PluginInstallFrame"].Option2:SetScript('OnClick', function()if SkadaDB and IsAddonLoaded("Skada") then SkadaDB['profiles']['MaximumOverdrive']); end)
-				_G["PluginInstallFrame"].Option2:SetText(HEALER)
+				_G["PluginInstallFrame"].Option2:SetScript('OnClick', function() Eb.Skada.db:SetProfile("MaximumOverheals"); end)
+				_G["PluginInstallFrame"].Option2:SetText("HEALER")
 			end,
 			[8] = function()
 				_G["PluginInstallFrame"].SubTitle:SetText(L["Installation Complete"])
@@ -8995,14 +8990,15 @@ local OverdriveUIInstallTable = {
 		[2] = L["OverdriveUI Layout"],
 		[3] = L["Unit Frames"],
 		[4] = L["Addon Profiles - DBM"],
-		[5] = L["Addon Profiles - Raven"]
-		[6] = L["Addon Profiles - xCT+"]
-		[7] = L["Addon Profiles - Skada"]
+		[5] = L["Addon Profiles - Raven"],
+		[6] = L["Addon Profiles - xCT+"],
+		[7] = L["Addon Profiles - Skada"],
 		[8] = L["Finished"],
-	},
-	["StepTitlesColorSelected"] = {.53,.53,.93},
-}
-
+		},
+		["StepTitlesColorSelected"] = {.53,.53,.93},
+	}
+end
+	
 local function InstallComplete()
 	E.private.OUI.install_complete = GetAddOnMetadata("OverdriveUI", "Version")
 
